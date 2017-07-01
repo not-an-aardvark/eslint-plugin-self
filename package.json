@@ -1,0 +1,23 @@
+{
+  "name": "eslint-plugin-self",
+  "version": "1.0.0",
+  "description": "Allows ESLint plugins to be run on themselves",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/not-an-aardvark/eslint-plugin-self.git"
+  },
+  "keywords": [
+    "eslint-plugin",
+    "eslintplugin"
+  ],
+  "author": "Teddy Katz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/not-an-aardvark/eslint-plugin-self/issues"
+  },
+  "homepage": "https://github.com/not-an-aardvark/eslint-plugin-self#readme"
+}
