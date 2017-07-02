@@ -2,8 +2,6 @@
 
 When writing an ESLint plugin, it's often useful to use the plugin's rules to lint the plugin's own codebase. You can use `eslint-plugin-self` to do that.
 
-`eslint-plugin-self` is just `module.exports = require('../..');`.
-
 ## Usage
 
 ```
