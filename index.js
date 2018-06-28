@@ -1,7 +1,7 @@
 'use strict';
 
 const plugin = require('../..');
-const pluginName = require('../../package.json').name.replace(/^eslint-plugin-/, '');
+const pluginName = require('../../package.json').name.replace(/^eslint-plugin-|\/eslint-plugin$/, '');
 const selfPlugin = Object.assign({}, plugin);
 
 if (plugin.configs) {
@@ -25,5 +25,7 @@ if (plugin.configs) {
     }
   });
 }
+
+console.log(selfPlugin)
 
 module.exports = selfPlugin;
