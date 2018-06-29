@@ -6,7 +6,6 @@ const selfPlugin = Object.assign({}, plugin);
 const pkgName = require('../../package.json').name;
 let pluginName;
 if (pkgName[0] === "@") {
-  const parts = pkgName.split('/');
   const matches = pkgName.match(/^(@[^/]+)\/eslint-plugin(?:-(.*))?$/);
   pluginName = matches.slice(1, 3).filter(Boolean).join('/');
 } else {
