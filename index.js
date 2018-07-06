@@ -1,8 +1,16 @@
 'use strict';
 
 const plugin = require('../..');
-const pluginName = require('../../package.json').name.replace(/^eslint-plugin-/, '');
 const selfPlugin = Object.assign({}, plugin);
+
+const pkgName = require('../../package.json').name;
+let pluginName;
+if (pkgName[0] === "@") {
+  const matches = pkgName.match(/^(@[^/]+)\/eslint-plugin(?:-(.*))?$/);
+  pluginName = matches.slice(1, 3).filter(Boolean).join('/');
+} else {
+  pluginName = pkgName.replace(/^eslint-plugin-/, '');
+}
 
 if (plugin.configs) {
   selfPlugin.configs = Object.assign({}, plugin.configs);
