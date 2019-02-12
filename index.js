@@ -22,6 +22,10 @@ if (plugin.configs) {
       selfPlugin.configs[configName].extends = [].concat(config.extends)
         .map(extendsName => extendsName.replace(`plugin:${pluginName}/`, 'plugin:self/'));
     }
+    if (config.plugins) {
+      selfPlugin.configs[configName].plugins = [].concat(config.plugins)
+        .map(enabledPluginName => enabledPluginName.replace(pluginName, 'self'));
+    }
     if (config.rules) {
       selfPlugin.configs[configName].rules = Object.assign({}, config.rules);
       Object.keys(config.rules).forEach(ruleName => {
