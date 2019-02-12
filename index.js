@@ -26,7 +26,7 @@ if (plugin.configs) {
       selfPlugin.configs[configName].rules = Object.assign({}, config.rules);
       Object.keys(config.rules).forEach(ruleName => {
         if (ruleName.startsWith(`${pluginName}/`)) {
-          selfPlugin.configs[configName].rules[`self${ruleName.slice(ruleName.lastIndexOf('/'))}`] = config.rules[ruleName];
+          selfPlugin.configs[configName].rules[`self${ruleName.slice(ruleName.indexOf('/'))}`] = config.rules[ruleName];
           delete selfPlugin.configs[configName].rules[ruleName];
         }
       });
