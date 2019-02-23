@@ -43,8 +43,11 @@ if (plugin.configs) {
     if (config.overrides) {
       selfPlugin.configs[configName].overrides = [].concat(config.overrides)
         .map((override) => {
-          override.rules = createRuleset(override.rules);
-          return override;
+          return Object.assign(
+            {},
+            override,
+            {rules: createRuleset(override.rules)}
+          );
         })
     }
   });
