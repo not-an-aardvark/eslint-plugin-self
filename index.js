@@ -12,6 +12,17 @@ if (pkgName[0] === "@") {
   pluginName = pkgName.replace(/^eslint-plugin-/, '');
 }
 
+function createRuleset(rules) {
+  return Object.keys(rules).reduce((newRules, oldRuleName) => {
+    const newRuleName = oldRuleName.startsWith(`${pluginName}/`)
+      ? `self${oldRuleName.slice(oldRuleName.indexOf('/'))}`
+      : oldRuleName;
+
+    newRules[newRuleName] = rules[oldRuleName];
+    return newRules;
+  }, {});
+}
+
 if (plugin.configs) {
   selfPlugin.configs = Object.assign({}, plugin.configs);
 
@@ -22,14 +33,22 @@ if (plugin.configs) {
       selfPlugin.configs[configName].extends = [].concat(config.extends)
         .map(extendsName => extendsName.replace(`plugin:${pluginName}/`, 'plugin:self/'));
     }
+    if (config.plugins) {
+      selfPlugin.configs[configName].plugins = [].concat(config.plugins)
+        .map(enabledPluginName => enabledPluginName.replace(pluginName, 'self'));
+    }
     if (config.rules) {
-      selfPlugin.configs[configName].rules = Object.assign({}, config.rules);
-      Object.keys(config.rules).forEach(ruleName => {
-        if (ruleName.startsWith(`${pluginName}/`)) {
-          selfPlugin.configs[configName].rules[`self${ruleName.slice(ruleName.lastIndexOf('/'))}`] = config.rules[ruleName];
-          delete selfPlugin.configs[configName].rules[ruleName];
-        }
-      });
+      selfPlugin.configs[configName].rules = createRuleset(config.rules);
+    }
+    if (config.overrides) {
+      selfPlugin.configs[configName].overrides = [].concat(config.overrides)
+        .map((override) => {
+          return Object.assign(
+            {},
+            override,
+            {rules: createRuleset(override.rules)}
+          );
+        })
     }
   });
 }
