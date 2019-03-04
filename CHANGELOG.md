@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.2.0 (2019-03-04)
+
+* Support redefining plugins, overrides and rules with a "/" in them ([#2](https://github.com/not-an-aardvark/eslint-plugin-self/issues/2)) ([428664e](https://github.com/not-an-aardvark/eslint-plugin-self/commit/428664e1cf8f3726e0bb3b10bb3e137d271749c2))
+
 ## v1.1.0 (2018-07-06)
 
 * Chore: add release script ([983a7d0](https://github.com/not-an-aardvark/eslint-plugin-self/commit/983a7d05c48bccc125f8d89fae1109a0c5a1d670))
