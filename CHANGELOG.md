@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.2.1 (2020-05-27)
+
+* Support overrides having no rules :see_no_evil: ([#5](https://github.com/not-an-aardvark/eslint-plugin-self/issues/5)) ([e266543](https://github.com/not-an-aardvark/eslint-plugin-self/commit/e266543e50d062251755dd488abae31be7644bb1))
+
 ## v1.2.0 (2019-03-04)
 
 * Support redefining plugins, overrides and rules with a "/" in them ([#2](https://github.com/not-an-aardvark/eslint-plugin-self/issues/2)) ([428664e](https://github.com/not-an-aardvark/eslint-plugin-self/commit/428664e1cf8f3726e0bb3b10bb3e137d271749c2))

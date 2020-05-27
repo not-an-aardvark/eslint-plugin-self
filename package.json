@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-self",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Allows ESLint plugins to be run on themselves",
   "main": "index.js",
   "scripts": {
