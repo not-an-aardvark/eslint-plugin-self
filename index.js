@@ -1,9 +1,13 @@
 'use strict';
 
-const plugin = require('../..');
+const path = require('path');
+
+const pluginDir = process.env.ESLINT_PLUGIN_SELF_DIR || '../';
+
+const plugin = require(pluginDir);
 const selfPlugin = Object.assign({}, plugin);
 
-const pkgName = require('../../package.json').name;
+const pkgName = require(path.join(pluginDir, '/package.json')).name;
 let pluginName;
 if (pkgName[0] === "@") {
   const matches = pkgName.match(/^(@[^/]+)\/eslint-plugin(?:-(.*))?$/);
@@ -47,7 +51,7 @@ if (plugin.configs) {
           return Object.assign(
             {},
             override,
-            {rules: createRuleset(override.rules)}
+            { rules: createRuleset(override.rules) }
           );
         })
     }
